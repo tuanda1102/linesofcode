@@ -191,6 +191,18 @@ const app = {
     javaList.children.length !== 0
       ? (measurementsBlockJava.innerHTML = htmlMeasurementsBlockJava)
       : (measurementsBlockJava.innerHTML = notiNothing);
+
+    const checkboxJsBtn = $$(".select__files-item");
+    const checkboxCplusBtn = $$(".cplus__list-item");
+    const checkboxJavaBtn = $$(".java__list-item");
+
+    console.log(checkboxJsBtn);
+
+    Array.from(checkboxJsBtn).forEach(btn => {
+      btn.onclick = () => {
+        console.log(btn);
+      }
+    })
   },
 
   // Hàm render ra các file cho từng loại ngôn ngữ
@@ -198,7 +210,7 @@ const app = {
     return files.arr
       .map(
         (file) => `
-            <label class="select__files-item" data-set="${files.name}"}>
+            <label class="select__files-item" data-item="${files.name}"}>
                 <span class="select__item-name">${file.name}</span>
                 <input type="checkbox" id="checkbox">
                 <span class="checkmark"></span>
@@ -230,10 +242,6 @@ const app = {
 
   // Hàm xử lý tất cả các DOM Events
   handleEvents: function () {
-    const checkboxJsBtn = $$(".js__list-item");
-    const checkboxCplusBtn = $$(".cplus__list-item");
-    const checkboxJavaBtn = $$(".java__list-item");
-
     const _this = this;
     let selectCheckbox = Array.from($$(".select__files-item"));
 
@@ -258,13 +266,12 @@ const app = {
         }
       });
 
+      // checkboxJsBtn.forEach((btn) => {
+      //   btn.onclick = () => {
+      //     console.log(btn);
+      //   };
+      // });
       _this.render();
-
-      checkboxJsBtn.forEach((btn) => {
-        btn.onclick = () => {
-          console.log(btn);
-        };
-      });
     };
 
     // Click vào từng loại file mà code đọc được, sẽ show ra các dropbox bên trong
