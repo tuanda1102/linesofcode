@@ -1,0 +1,295 @@
+/* CSS FOR APP */
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark-color);
+  color: var(--text-color);
+  position: fixed;
+}
+
+/* Header */
+.header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  margin: 20px 0;
+}
+
+.app-title {
+  margin-left: 10px;
+}
+
+/* Data input */
+.data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark-light-color);
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input-file-container {
+  position: relative;
+  width: 225px;
+  padding: 10px 0;
+}
+
+.input-file-trigger {
+  display: block;
+  padding: 14px 45px;
+  background: #39d2b4;
+  color: #fff;
+  font-size: 1em;
+  transition: all 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.input-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+.input-file:hover + .input-file-trigger.active,
+.input-file:focus + .input-file-trigger.active,
+.input-file-trigger.active:hover,
+.input-file-trigger.active:focus {
+  background: #34495e;
+  color: #39d2b4;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.file-return {
+  margin: 0;
+  flex: 1;
+  padding-left: 20px;
+}
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+.file-return {
+  font-style: italic;
+  font-size: 1em;
+  font-weight: bold;
+}
+.file-return:not(:empty):before {
+  content: "Selected folder: ";
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* Choose types */
+.measurements-item-name {
+  color: var(--green-color);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.measurements_types {
+  margin-top: 42px;
+  height: 100%;
+  user-select: none;
+}
+
+.measurements_types-item {
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.measurements_types-item:hover .measurements_types-item-name {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.measurements_types-item-name {
+  color: var(--green-color);
+  font-size: 20px;
+}
+
+/* Select Files */
+.select_files,
+.measurements  {
+  padding: 0 15px 15px 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.select_files-title {
+  position: fixed;
+  z-index: 10;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--violet-color);
+  box-shadow: 0px 15px 10px -15px var(--violet-color);
+  background-color: var(--dark-color);    
+  min-width: 255px;
+}
+
+.select__files-item {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 4px 0;
+  margin-right: 10px;
+}
+
+.select__files-item:hover {
+  background-color: var(--dark-light-color);
+}
+
+/* Hide the browser's default checkbox */
+.select__files-item input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.select__files-item:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.select__item-name:hover {
+  color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.select__files-item input:checked ~ .checkmark {
+  background-color: var(--blue-color);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.select__files-item input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.select__files-item .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* MAIN */
+.main {
+  max-height: 75vh;
+  overflow: hidden;
+}
+
+.main,
+.main-center,
+.select_files,
+.measurements {
+  height: 100%;
+}
+
+.select__files-list {
+  margin-top: 15px;
+  margin-left: 10px;
+  display: none;
+}
+
+.measurements_types-item-name.show ~ .select__files-list  {
+  display: block;
+}
+
+.select_files::-webkit-scrollbar-track,
+.measurements::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.select_files::-webkit-scrollbar,
+.measurements::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.select_files::-webkit-scrollbar-thumb,
+.measurements::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+/* Measurement */
+.measurement__item {
+  padding: 15px;
+}
+
+.item__main {
+  border-radius: 4px;
+  background-color: var(--dark-light-color);
+}
+
+.item__info {
+  height: 80px;
+  padding: 20px;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item__number {
+  color: var(--blue-color);
+}
+
+.item__footer {
+  background-color: var(--violet-color);
+  height: 38px;
+  line-height: 38px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.noti-nothing {
+  font-size: 20px;
+  color: var(--violet-color);
+  padding: 10px 0 10px 30px;
+}
