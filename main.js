@@ -192,17 +192,38 @@ const app = {
       ? (measurementsBlockJava.innerHTML = htmlMeasurementsBlockJava)
       : (measurementsBlockJava.innerHTML = notiNothing);
 
-    const checkboxJsBtn = $$(".select__files-item");
-    const checkboxCplusBtn = $$(".cplus__list-item");
-    const checkboxJavaBtn = $$(".java__list-item");
+    this.handleSelectFiles();
+  },
 
-    console.log(checkboxJsBtn);
+  // Hàm xử lý khi click vào các ô Checkbox
+  handleSelectFiles: function () {
+    const _this = this;
+    const checkboxBtn = $$("#checkbox");
 
-    Array.from(checkboxJsBtn).forEach(btn => {
-      btn.onclick = () => {
-        console.log(btn);
+    console.log(allFiles);
+
+    Array.from(checkboxBtn).forEach((checkbox) => {
+      checkbox.onclick = () => {
+        if (checkbox.dataset.item === "js__list-item") {
+          allFiles.javascriptFiles.arr.forEach((file) => {
+            let nameElement = _this.getParent(checkbox, 'select__files-item').querySelector('.select__item-name').textContent;
+            if(nameElement === file.name) {
+              console.log(file);
+            }
+          });
+        }
+      };
+    });
+  },
+
+  // Hàm get ra thẻ cha của một element
+  getParent: function (element, selector) {
+    while (element.parentElement) {
+      if (element.parentElement.matches(selector)) {
+        return element.parentElement;
       }
-    })
+      element = element.parentElement;
+    }
   },
 
   // Hàm render ra các file cho từng loại ngôn ngữ
@@ -210,9 +231,9 @@ const app = {
     return files.arr
       .map(
         (file) => `
-            <label class="select__files-item" data-item="${files.name}"}>
+            <label class="select__files-item">
                 <span class="select__item-name">${file.name}</span>
-                <input type="checkbox" id="checkbox">
+                <input type="checkbox" id="checkbox" data-item="${files.name}"}>
                 <span class="checkmark"></span>
             </label>
         `
@@ -243,7 +264,7 @@ const app = {
   // Hàm xử lý tất cả các DOM Events
   handleEvents: function () {
     const _this = this;
-    let selectCheckbox = Array.from($$(".select__files-item"));
+    // let selectCheckbox = Array.from($$(".select__files-item"));
 
     // Hàm đọc dữ liệu
     inputBtn.onchange = (event) => {
@@ -284,11 +305,11 @@ const app = {
     });
 
     // Xử lý sự kiện click checkbox
-    selectCheckbox.forEach((checkbox) => {
-      checkbox.addEventListener("click", function (e) {
-        console.log(e);
-      });
-    });
+    // selectCheckbox.forEach((checkbox) => {
+    //   checkbox.addEventListener("click", function (e) {
+    //     console.log(e);
+    //   });
+    // });
   },
 
   returnFolderName: function (files) {
