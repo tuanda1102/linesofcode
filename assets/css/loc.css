@@ -89,6 +89,28 @@
   font-weight: normal;
 }
 
+.run {
+  min-width: 120px;
+  background-color: var(--blue-color);
+  padding: 12px 0;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 1;
+  display: none;
+  user-select: none;
+}
+
+.run.active {
+  display: block;
+}
+
+.run:hover {
+  opacity: 0.8;
+}
+
 /* Choose types */
 .measurements-item-name {
   color: var(--green-color);

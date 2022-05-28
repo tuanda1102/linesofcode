@@ -174,8 +174,7 @@ const app = {
 
     // Lặp qua tất cả các kí tự của File
     for (let index = 0; index < fileCodeLength; ++index) {
-
-      // Đếm số dòng trong Block Comments
+      // Đếm số dòng trong Block Comments 
       if (fileCode[index] === "/" && fileCode[index + 1] === "*") {
         // Lấy ra dòng bắt đầu đếm code Block Comments
         let startCommentsBlock = index + 1;
