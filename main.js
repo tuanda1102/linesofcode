@@ -212,16 +212,16 @@ const app = {
             ".select__item-name"
           ).textContent;
         // Kiểm tra xem checkbox được click là thuộc loại ngôn ngữ lập trình nào
-        _this.handleLocArr(checkbox, allFiles, nameElement, "js__list-item");
-        _this.handleLocArr(checkbox, allFiles, nameElement, "cplus__list-item");
-        _this.handleLocArr(checkbox, allFiles, nameElement, "java__list-item");
+        _this.handleLocArr(linesOfCodeJS, checkbox, allFiles, nameElement, "js__list-item");
+        _this.handleLocArr(linesOfCodeCplus, checkbox, allFiles, nameElement, "cplus__list-item");
+        _this.handleLocArr(linesOfCodeJava, checkbox, allFiles, nameElement, "java__list-item");
       };
     });
   },
 
   // Kiểm tra xem checkbox được click là thuộc loại ngôn ngữ lập trình nào
   // Rồi add file được check vào loại ngôn ngữ đó
-  handleLocArr: function (checkbox, allFiles, nameElement, selector) {
+  handleLocArr: function (linesOfCode, checkbox, allFiles, nameElement, selector) {
     if (checkbox.dataset.item === selector) {
       let typeFile = {};
       if (selector === "js__list-item") {
@@ -237,16 +237,16 @@ const app = {
         if (nameElement === file.name) {
           // Kiểm tra xem file LOC đã có file đó chưa
           // Nếu có thì remove, nếu chưa thì add vào
-          let isValid = linesOfCodeJS.arrLoc.find(
+          let isValid = linesOfCode.arrLoc.find(
             (item) => item.name === file.name
           );
           if (isValid) {
-            let index = linesOfCodeJS.arrLoc.indexOf(file);
+            let index = linesOfCode.arrLoc.indexOf(file);
             if (index > -1) {
-              linesOfCodeJS.arrLoc.splice(index, 1);
+              linesOfCode.arrLoc.splice(index, 1);
             }
           } else {
-            linesOfCodeJS.arrLoc.push(file);
+            linesOfCode.arrLoc.push(file);
           }
         }
       });
@@ -296,7 +296,6 @@ const app = {
 
     // Hàm đọc dữ liệu
     inputBtn.onchange = (event) => {
-
       linesOfCodeJS = {
         arrLoc: [],
         linesPhysical: {
@@ -447,6 +446,8 @@ const app = {
 
     runBtn.onclick = () => {
       this.handleData(linesOfCodeJS);
+      this.handleData(linesOfCodeCplus);
+      this.handleData(linesOfCodeJava);
     };
   },
 
