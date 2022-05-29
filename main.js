@@ -212,16 +212,40 @@ const app = {
             ".select__item-name"
           ).textContent;
         // Kiểm tra xem checkbox được click là thuộc loại ngôn ngữ lập trình nào
-        _this.handleLocArr(linesOfCodeJS, checkbox, allFiles, nameElement, "js__list-item");
-        _this.handleLocArr(linesOfCodeCplus, checkbox, allFiles, nameElement, "cplus__list-item");
-        _this.handleLocArr(linesOfCodeJava, checkbox, allFiles, nameElement, "java__list-item");
+        _this.handleLocArr(
+          linesOfCodeJS,
+          checkbox,
+          allFiles,
+          nameElement,
+          "js__list-item"
+        );
+        _this.handleLocArr(
+          linesOfCodeCplus,
+          checkbox,
+          allFiles,
+          nameElement,
+          "cplus__list-item"
+        );
+        _this.handleLocArr(
+          linesOfCodeJava,
+          checkbox,
+          allFiles,
+          nameElement,
+          "java__list-item"
+        );
       };
     });
   },
 
   // Kiểm tra xem checkbox được click là thuộc loại ngôn ngữ lập trình nào
   // Rồi add file được check vào loại ngôn ngữ đó
-  handleLocArr: function (linesOfCode, checkbox, allFiles, nameElement, selector) {
+  handleLocArr: function (
+    linesOfCode,
+    checkbox,
+    allFiles,
+    nameElement,
+    selector
+  ) {
     if (checkbox.dataset.item === selector) {
       let typeFile = {};
       if (selector === "js__list-item") {
@@ -296,121 +320,6 @@ const app = {
 
     // Hàm đọc dữ liệu
     inputBtn.onchange = (event) => {
-      linesOfCodeJS = {
-        arrLoc: [],
-        linesPhysical: {
-          id: 1,
-          name: "Physical",
-          lines: 0,
-        },
-        linesSource: {
-          id: 2,
-          name: "Source",
-          lines: 0,
-        },
-        comment: {
-          id: 6,
-          name: "Comment",
-          lines: 0,
-        },
-        singleLineComment: {
-          id: 3,
-          name: "Single-line comment",
-          lines: 0,
-        },
-        blockComment: {
-          id: 5,
-          name: "Block comment",
-          lines: 0,
-        },
-        mixed: {
-          id: 7,
-          name: "Mixed Lines",
-          lines: 0,
-        },
-        emptyLines: {
-          id: 4,
-          name: "Empty Lines",
-          lines: 0,
-        },
-      };
-      linesOfCodeCplus = {
-        arrLoc: [],
-        linesPhysical: {
-          id: 1,
-          name: "Physical",
-          lines: 0,
-        },
-        linesSource: {
-          id: 2,
-          name: "Source",
-          lines: 0,
-        },
-        comment: {
-          id: 6,
-          name: "Comment",
-          lines: 0,
-        },
-        singleLineComment: {
-          id: 3,
-          name: "Single-line comment",
-          lines: 0,
-        },
-        blockComment: {
-          id: 5,
-          name: "Block comment",
-          lines: 0,
-        },
-        mixed: {
-          id: 7,
-          name: "Mixed Lines",
-          lines: 0,
-        },
-        emptyLines: {
-          id: 4,
-          name: "Empty Lines",
-          lines: 0,
-        },
-      };
-      linesOfCodeJava = {
-        arrLoc: [],
-        linesPhysical: {
-          id: 1,
-          name: "Physical",
-          lines: 0,
-        },
-        linesSource: {
-          id: 2,
-          name: "Source",
-          lines: 0,
-        },
-        comment: {
-          id: 6,
-          name: "Comment",
-          lines: 0,
-        },
-        singleLineComment: {
-          id: 3,
-          name: "Single-line comment",
-          lines: 0,
-        },
-        blockComment: {
-          id: 5,
-          name: "Block comment",
-          lines: 0,
-        },
-        mixed: {
-          id: 7,
-          name: "Mixed Lines",
-          lines: 0,
-        },
-        emptyLines: {
-          id: 4,
-          name: "Empty Lines",
-          lines: 0,
-        },
-      };
-
       const files = event.target.files;
 
       // Lấy tên Folder đưa ra giao diện người dùng
@@ -492,7 +401,7 @@ const app = {
         }
       }
     }
-
+    
     // Lặp qua tất cả các dòng
     for (var line = 0; line < arrLines.length - 1; line++) {
       const [firstChar, ...restCharsLine] = arrLines[line].trim();
